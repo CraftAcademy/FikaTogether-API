@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: FikaTogether_API_development
+
+  test:
+  <<: *default
+  database: FikaTogether_API_test
+
+production:
+  <<: *default
+  database: FikaTogether_API_production
+  username: FikaTogether_API
+  password: <%= ENV['FIKATOGETHER_API_DATABASE_PASSWORD'] %>
