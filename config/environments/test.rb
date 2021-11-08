@@ -1,11 +1,9 @@
-require "active_support/core_ext/integer/time"
-
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
- 
   config.cache_classes = false
   config.action_view.cache_template_loading = true
- config.eager_load = false
+  config.eager_load = false
 
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
@@ -31,5 +29,4 @@ Rails.application.configure do
   config.active_support.disallowed_deprecation = :raise
 
   config.active_support.disallowed_deprecation_warnings = []
-
-  end
+end

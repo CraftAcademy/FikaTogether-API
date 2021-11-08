@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   config.cache_classes = false
@@ -35,5 +35,4 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  end
+end
