@@ -13,3 +13,11 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
 end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+  gem 'pry-rails'
+  gem 'faker', '~> 2.19'
+end
