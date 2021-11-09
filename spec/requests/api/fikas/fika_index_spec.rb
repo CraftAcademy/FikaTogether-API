@@ -2,7 +2,7 @@ RSpec.describe 'GET /api/fikas', type: :request do
   subject { response }
 
   describe 'when there are fikas in the database' do
-    # let(:fika_1) { create(:fika) }
+    let!(:fika) { 3.times {create(:fika)} }
 
     before do
       get '/api/fikas'
@@ -16,6 +16,10 @@ RSpec.describe 'GET /api/fikas', type: :request do
 
     it 'is expected to return a start date' do
       expect(response_json['fikas'].last['start_date']).to eq '2017-01-25T09:00:00'
+    end
+
+    it 'is expected to return a start date' do
+      expect(response_json['fikas'].last['end_date']).to eq '2017-01-25T09:30:00'
     end
   end
 end

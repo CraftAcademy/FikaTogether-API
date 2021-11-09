@@ -1,5 +1,6 @@
 class Api::FikasController < ApplicationController
   def index
-    binding.pry
+    fikas = Fika.all
+    render json: { fikas: fikas}
   end
 end
