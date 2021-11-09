@@ -27,6 +27,17 @@ RSpec.describe 'GET /api/fikas', type: :request do
     it 'is expected to return two fika goers' do
       expect(response_json['fikas'].last['fika_goers'].count).to eq 2
     end
-    
+  end
+
+  describe 'when there are no fikas in the databse' do
+    before do
+      get '/api/fikas'
+    end
+
+    it { is_expected.to have_http_status 404 }
+
+    it 'is expected to return with a message indicating there are no articles' do
+      expect(response_json['message']).to eq 'There are no fikas in the database'
+    end
   end
 end
