@@ -20,4 +20,5 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'faker', '~> 2.19'
+  gem 'simplecov'
 end
