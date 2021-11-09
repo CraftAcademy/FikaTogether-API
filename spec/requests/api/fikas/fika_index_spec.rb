@@ -25,7 +25,6 @@ RSpec.describe 'GET /api/fikas', type: :request do
     end
 
     it 'is expected to return two fika goers' do
-      binding.pry
       expect(response_json['fikas'].last['fika_goers'].count).to eq 2
     end
     
