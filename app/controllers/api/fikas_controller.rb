@@ -11,16 +11,12 @@ class Api::FikasController < ApplicationController
   end
 
   def create
-    participants = Participant.all
-    arr = participants.to_a.permutation(2).to_a
-    arr_sorted = []
-    arr.each do |pair|
-      arr_sorted.push(pair.sort_by(&:id))
-    end
-    arr_sorted.uniq!
+    arr_sorted = Fika.participants_uniq_matcher
+    
     arr_sorted.each do |fika|
       Fika.create(start_date: Time.now, end_date: Time.now + 30.minutes, participants: fika)
     end
+
     if arr_sorted.any?
       render json: { message: 'Fikas successfully created' }, status: 201
     else
