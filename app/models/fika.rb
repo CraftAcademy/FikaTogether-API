@@ -20,7 +20,7 @@ class Fika < ApplicationRecord
     normalize_start_dates(fika)
     normalize_management(fika)
     normalize_department(fika)
-    # binding.pry
+    calc_cosine_similarity
   end
 
   def self.normalize_start_dates(fika)
@@ -48,5 +48,17 @@ class Fika < ApplicationRecord
       @vector_1.push(0.0)
       @vector_2.push(0.0)
     end
+  end
+
+  def self.calc_cosine_similarity
+    return nil if @vector_1.size != @vector_2.size
+
+    dot_product = 0
+    @vector_1.zip(@vector_2).each do |vector_1_component, vector_2_component|
+      dot_product += vector_1_component * vector_2_component
+    end
+    a = @vector_1.map { |n| n**2 }.reduce(:+)
+    b = @vector_2.map { |n| n**2 }.reduce(:+)
+    dot_product / (Math.sqrt(a) * Math.sqrt(b))
   end
 end
