@@ -14,7 +14,8 @@ class Api::FikasController < ApplicationController
     arr_sorted = Fika.participants_uniq_matcher
     
     arr_sorted.each do |fika|
-      Fika.create(start_date: Time.now, end_date: Time.now + 30.minutes, participants: fika)
+      similarity = Fika.cosine_similarity(fika)
+      Fika.create(start_date: Time.now, end_date: Time.now + 30.minutes, participants: fika, similarity: similarity)
     end
 
     if arr_sorted.any?
