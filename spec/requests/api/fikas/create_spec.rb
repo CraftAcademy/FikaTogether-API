@@ -1,6 +1,6 @@
 RSpec.describe 'POST /api/fikas', type: :request do
     subject { response }
-    let!(:participants) { 4.times { create(:participant) } }
+    let!(:participants) { 5.times { create(:participant) } }
 
     describe 'successfully' do
         before do

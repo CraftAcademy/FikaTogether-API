@@ -11,14 +11,15 @@ class Api::FikasController < ApplicationController
   def create
     participants = Participant.all
     arr = participants.to_a.permutation(2).to_a
-    
-    
-    
+    arr_sorted = []
     arr.each do |pair|
-      
-      binding.pry
-      
-      # arr.sort
+      arr_sorted.push(pair.sort_by(&:id))
     end
+    arr_sorted.uniq!
+
+    arr_sorted.each do |fika|
+      Fika.create(start_date: Time.now, end_date: Time.now + 30.minutes, participants: fika)
+    end
+    binding.pry
   end
 end
