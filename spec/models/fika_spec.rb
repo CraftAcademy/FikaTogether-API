@@ -10,7 +10,7 @@ RSpec.describe Fika, type: :model do
   end
 
   describe 'Associations' do
-    it { is_expected.to have_and_belong_to_many(:fika_goers) }
+    it { is_expected.to have_and_belong_to_many(:participants) }
   end
 
   describe 'FactoryBot' do

@@ -1,6 +1,6 @@
-class CreateFikaGoers < ActiveRecord::Migration[6.1]
+class CreateParticipants < ActiveRecord::Migration[6.1]
   def change
-    create_table :fika_goers do |t|
+    create_table :participants do |t|
       t.string :name
       t.string :email
       t.datetime :start_date

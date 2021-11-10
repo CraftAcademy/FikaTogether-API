@@ -1,4 +1,4 @@
-RSpec.describe FikaGoer, type: :model do
+RSpec.describe Participant, type: :model do
   describe 'DB Table' do
     it { is_expected.to have_db_column :name }
     it { is_expected.to have_db_column :email }
@@ -20,7 +20,7 @@ RSpec.describe FikaGoer, type: :model do
 
   describe 'FactoryBot' do
     it 'is expected to have a valid Factory' do
-      expect(create(:fika_goer)).to be_valid
+      expect(create(:participant)).to be_valid
     end
   end
 end
