@@ -2,6 +2,7 @@ RSpec.describe Fika, type: :model do
   describe 'DB Table' do
     it { is_expected.to have_db_column :start_date }
     it { is_expected.to have_db_column :end_date }
+    it { is_expected.to have_db_column :similarity }
   end
 
   describe 'Validations' do
