@@ -18,7 +18,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
 
     it 'is expected to create two fikas' do
       expect(Fika.count).to eq 6
-    end
+    end    
   end
 
   describe 'unsuccessfully' do

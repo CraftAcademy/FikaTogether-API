@@ -30,7 +30,11 @@ RSpec.describe 'GET /api/fikas', type: :request do
 
     it 'is expected to return a float at the similarity score between the two participants' do
       expect(response_json['fikas'].last['similarity']).to be_kind_of(Float)
-    end   
+    end
+    
+    it 'is expected that the similarity score is between 0 and 1' do
+      expect(response_json['fikas'].last['similarity']).to be_between(0, 1)
+    end
   end
 
   describe 'when there are no fikas in the databse' do
