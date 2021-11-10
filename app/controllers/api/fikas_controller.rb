@@ -1,4 +1,6 @@
 class Api::FikasController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     fikas = Fika.all
     if fikas.any?
