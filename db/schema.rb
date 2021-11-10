@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_11_10_193730) do
     t.boolean "management", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "department"
+    t.integer "seniority"
   end
 
 end

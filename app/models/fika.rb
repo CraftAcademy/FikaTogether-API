@@ -19,7 +19,8 @@ class Fika < ApplicationRecord
     @vector_2 = []
     normalize_start_dates(fika)
     normalize_management(fika)
-    binding.pry
+    normalize_department(fika)
+    # binding.pry
   end
 
   def self.normalize_start_dates(fika)
@@ -34,8 +35,18 @@ class Fika < ApplicationRecord
 
   def self.normalize_management(fika)
     normalized_management_1 = fika.first.management && 1.0 || 0.0
-    normalized_management_2 = fika.last.management && 1.0 || 0.0 
+    normalized_management_2 = fika.last.management && 1.0 || 0.0
     @vector_1.push(normalized_management_1)
     @vector_2.push(normalized_management_2)
+  end
+
+  def self.normalize_department(fika)
+    if fika.pluck(:department).uniq.count > 1
+      @vector_1.push(1.0)
+      @vector_2.push(0.0)
+    else
+      @vector_1.push(0.0)
+      @vector_2.push(0.0)
+    end
   end
 end
