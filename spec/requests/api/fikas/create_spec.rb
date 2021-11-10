@@ -1,6 +1,6 @@
 RSpec.describe 'POST /api/fikas', type: :request do
     subject { response }
-    let!(:participants) { 5.times { create(:participant) } }
+    let!(:participants) { 4.times { create(:participant) } }
 
     describe 'successfully' do
         before do
@@ -14,7 +14,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
         end
 
         it 'is expected to create two fikas' do
-            expect(Fikas.all.count).to eq 6
+            expect(Fika.count).to eq 6
         end
     end
 end

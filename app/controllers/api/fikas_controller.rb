@@ -20,6 +20,7 @@ class Api::FikasController < ApplicationController
     arr_sorted.each do |fika|
       Fika.create(start_date: Time.now, end_date: Time.now + 30.minutes, participants: fika)
     end
-    binding.pry
+    # binding.pry
+    render json: {message: 'Fikas successfully created!!!'}, status: 201
   end
 end
