@@ -1,5 +1,5 @@
 class Api::FikasController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, only: :create
 
   def index
     fikas = Fika.all
@@ -18,11 +18,13 @@ class Api::FikasController < ApplicationController
       arr_sorted.push(pair.sort_by(&:id))
     end
     arr_sorted.uniq!
-
     arr_sorted.each do |fika|
       Fika.create(start_date: Time.now, end_date: Time.now + 30.minutes, participants: fika)
     end
-    # binding.pry
-    render json: {message: 'Fikas successfully created!!!'}, status: 201
+    if arr_sorted.any?
+      render json: { message: 'Fikas successfully created' }, status: 201
+    else
+      render json: { message: 'There are no participants in the database' }, status: 404
+    end
   end
 end

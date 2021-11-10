@@ -36,7 +36,7 @@ RSpec.describe 'GET /api/fikas', type: :request do
 
     it { is_expected.to have_http_status 404 }
 
-    it 'is expected to return with a message indicating there are no articles' do
+    it 'is expected to return with a message indicating there are no fikas' do
       expect(response_json['message']).to eq 'There are no fikas in the database'
     end
   end
