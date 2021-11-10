@@ -18,6 +18,7 @@ class Fika < ApplicationRecord
     @vector_1 = []
     @vector_2 = []
     normalize_start_dates(fika)
+    normalize_management(fika)
     binding.pry
   end
 
@@ -29,5 +30,12 @@ class Fika < ApplicationRecord
     normalized_start_date_2 = (Time.now.to_f - fika.last.start_date.to_f) / start_date_delta
     @vector_1.push(normalized_start_date_1)
     @vector_2.push(normalized_start_date_2)
+  end
+
+  def self.normalize_management(fika)
+    normalized_management_1 = fika.first.management && 1.0 || 0.0
+    normalized_management_2 = fika.last.management && 1.0 || 0.0 
+    @vector_1.push(normalized_management_1)
+    @vector_2.push(normalized_management_2)
   end
 end
