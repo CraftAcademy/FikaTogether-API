@@ -2,7 +2,8 @@ RSpec.describe 'GET /api/departments', type: :request do
   subject { response }
 
   describe 'when there are departments in the database' do
-  
+    # let!(:departments) { create_list(:department, 3) }
+    # let!(:participant_1) { create(:participant) }
 
 
     before do
