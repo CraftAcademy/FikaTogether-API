@@ -21,6 +21,7 @@ RSpec.describe Participant, type: :model do
 
   describe 'Associations' do
     it { is_expected.to have_and_belong_to_many(:fikas) }
+    it { is_expected.to have_and_belong_to(:department) }
   end
 
   describe 'FactoryBot' do
