@@ -11,14 +11,14 @@ class Api::FikasController < ApplicationController
   end
 
   def create
-    arr_sorted = Fika.participants_uniq_matcher
-    arr_sorted.each do |fika|
-      similarity = SimilarityService.cosine_similarity(fika)
-      Fika.create(start_date: Time.now, end_date: Time.now + 30.minutes, participants: fika,
+    fikas = Fika.participants_uniq_matcher
+    fikas.each do |fikas_participants|
+      similarity = SimilarityService.cosine_similarity(fikas_participants)
+      Fika.create(start_date: Time.now, end_date: Time.now + 30.minutes, participants: fikas_participants,
       similarity: similarity)
     end
 
-    if arr_sorted.any?
+    if fikas.any?
       render json: { message: 'Fikas successfully created' }, status: 201
     else
       render json: { message: 'There are no participants in the database' }, status: 404

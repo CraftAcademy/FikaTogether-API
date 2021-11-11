@@ -36,11 +36,12 @@ module SimilarityService
 
   def self.calc_cosine_similarity
     return nil if @vector_1.size != @vector_2.size
-
+        
     dot_product = 0
     @vector_1.zip(@vector_2).each do |vector_1_component, vector_2_component|
       dot_product += vector_1_component * vector_2_component
     end
+        
     a = @vector_1.map { |n| n**2 }.reduce(:+)
     b = @vector_2.map { |n| n**2 }.reduce(:+)
     dot_product / (Math.sqrt(a) * Math.sqrt(b))
