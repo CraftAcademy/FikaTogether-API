@@ -10,6 +10,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise_token_auth'
+gem 'google-api-client', require: ['google/apis/calendar_v3', 'googleauth']
 
 group :development do
   gem 'listen', '~> 3.3'
@@ -23,4 +24,5 @@ group :development, :test do
   gem 'pry-rails'
   gem 'faker', '~> 2.19'
   gem 'simplecov'
+  gem 'webmock'
 end
