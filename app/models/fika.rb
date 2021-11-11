@@ -6,13 +6,11 @@ class Fika < ApplicationRecord
   private
 
   def self.participants_uniq_matcher
-    participants = Participant.all
-    possible_participant_pairings = participants.to_a.permutation(2).to_a
+    possible_participant_pairings = Participant.all.to_a.permutation(2).to_a
     unique_pairings = []
     possible_participant_pairings.each do |pair|
       unique_pairings.push(pair.sort_by(&:id))
     end
-    unique_pairings.uniq!
-    unique_pairings
+    unique_pairings.uniq
   end
 end
