@@ -5,6 +5,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
 
   describe 'successfully' do
     let!(:participants) { 4.times { create(:participant) } }
+    
     before do
       post '/api/fikas',
            headers: credentials
@@ -16,9 +17,9 @@ RSpec.describe 'POST /api/fikas', type: :request do
       expect(response_json['message']).to eq 'Fikas successfully created'
     end
 
-    it 'is expected to create two fikas' do
+    it 'is expected to create six fikas' do
       expect(Fika.count).to eq 6
-    end
+    end    
   end
 
   describe 'unsuccessfully' do

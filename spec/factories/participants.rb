@@ -3,6 +3,8 @@ FactoryBot.define do
     name { Faker::Name.unique.name }
     email { Faker::Internet.unique.email }
     start_date { Faker::Date.between(from: 5.years.ago, to: Date.today) }
-    management { false }
+    management { Faker::Boolean.boolean }
+    department { Faker::Job.field }
+    seniority { 2 }
   end
 end
