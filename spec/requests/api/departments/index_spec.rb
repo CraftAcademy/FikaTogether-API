@@ -11,6 +11,8 @@ RSpec.describe 'GET /api/departments', type: :request do
 
     it { is_expected.to have_http_status 200 }
 
-    
+    it 'is expected that department has a name' do
+      binding.pry
+    end
   end
 end
