@@ -6,25 +6,22 @@ module SimilarityService
     normalize_start_dates
     normalize_management
     normalize_department
-    binding.pry
     calc_cosine_similarity
   end
 
   def self.normalize_start_dates
     arr_start_date = Participant.pluck(:start_date).sort
-    start_date_delta = Time.now.to_f - arr_start_date.first.to_f
+    max_start_date_range = Time.now.to_f - arr_start_date.first.to_f
 
-    normalized_start_date_1 = (Time.now.to_f - @fika.first.start_date.to_f) / start_date_delta
-    normalized_start_date_2 = (Time.now.to_f - @fika.last.start_date.to_f) / start_date_delta
+    normalized_start_date_1 = (Time.now.to_f - @fika.first.start_date.to_f) / max_start_date_range
+    normalized_start_date_2 = (Time.now.to_f - @fika.last.start_date.to_f) / max_start_date_range
     @vector_1.push(normalized_start_date_1)
     @vector_2.push(normalized_start_date_2)
   end
 
   def self.normalize_management
-    normalized_management_1 = @fika.first.management && 0.20 || 0.10
-    normalized_management_2 = @fika.last.management && 0.20 || 0.10
-    @vector_1.push(normalized_management_1)
-    @vector_2.push(normalized_management_2)
+    @vector_1.concat @fika.first.management ? [1.0, 0.0] : [0.0, 1.0]
+    @vector_2.concat @fika.last.management ? [1.0, 0.0] : [0.0, 1.0]
   end
 
   def self.normalize_department

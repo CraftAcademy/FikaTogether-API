@@ -4,9 +4,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
   let(:credentials) { admin.create_new_auth_token }
 
   describe 'successfully' do
-    # let!(:participants) { 2.times { create(:participant) } }
-    let!(:participants_1) {create(:participant, name: "Fraser", start_date: Time.now-35.years, management: true, department: "gHR" ) }
-    let!(:participants_2) {create(:participant, name: "Max", start_date: Time.now-2.years, management: false, department: "HR") }
+    let!(:participants) { 4.times { create(:participant) } }
     
     before do
       post '/api/fikas',
@@ -19,8 +17,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
       expect(response_json['message']).to eq 'Fikas successfully created'
     end
 
-    it 'is expected to create two fikas' do
-      binding.pry
+    it 'is expected to create six fikas' do
       expect(Fika.count).to eq 6
     end    
   end
