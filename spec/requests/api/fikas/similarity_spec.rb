@@ -21,7 +21,7 @@ describe 'POST and GET /api/fikas, similarity functionality', type: :request do
       expect(response_json['fikas'].count).to eq 1
     end
 
-    it 'is expected to return a similarity score that is 1' do
+    it 'is expected to return a similarity score that is very nearly 1.0' do
       expect(response_json['fikas'].last['similarity']).to be_within(0.00001).of(1.0)
     end
   end
