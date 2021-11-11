@@ -14,7 +14,7 @@ class Fika < ApplicationRecord
     arr_sorted
   end
 
-  def self.cosine_similarity(fika)
+  def self.cosine_similarity_model(fika)
     @fika = fika
     @vector_1 = []
     @vector_2 = []
