@@ -65,10 +65,12 @@ ActiveRecord::Schema.define(version: 2021_11_11_154939) do
     t.string "email"
     t.datetime "start_date"
     t.boolean "management", default: false
+    t.bigint "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "department"
     t.integer "seniority"
+    t.index ["department_id"], name: "index_participants_on_department_id"
   end
 
+  add_foreign_key "participants", "departments"
 end

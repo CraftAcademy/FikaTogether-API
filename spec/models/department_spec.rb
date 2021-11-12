@@ -10,7 +10,7 @@ RSpec.describe Department, type: :model do
   end
 
   describe 'Associations' do
-    it { is_expected.to have_and_belong_to_many(:participants) }
+    it { is_expected.to have_many(:participants) }
   end
 
   describe 'FactoryBot' do
