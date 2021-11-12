@@ -5,11 +5,12 @@ describe 'POST and GET /api/fikas, similarity functionality', type: :request do
 
   describe 'when two participants have identical properties' do
     let!(:participant_1) do
-      create(:participant, name: 'Fraser', start_date: Time.now - 2.years, management: false, department: 'HR')
+      create(:participant, name: 'Fraser', start_date: Time.now - 2.years, management: false)
     end
     let!(:participant_2) do
-      create(:participant, name: 'Max', start_date: Time.now - 2.years, management: false, department: 'HR')
+      create(:participant, name: 'Max', start_date: Time.now - 2.years, management: false)
     end
+    let!(:department) { create(:department) }
 
     before do
       post '/api/fikas',
@@ -28,11 +29,12 @@ describe 'POST and GET /api/fikas, similarity functionality', type: :request do
 
   describe 'when the two participants are wildly different' do
     let!(:participant_1) do
-      create(:participant, name: 'Dorian', start_date: Time.now - 1.years, management: true, department: 'Sailing')
+      create(:participant, name: 'Dorian', start_date: Time.now - 1.years, management: true)
     end
     let!(:participant_2) do
-      create(:participant, name: 'August', start_date: Time.now - 27.years, management: false, department: 'Imports')
+      create(:participant, name: 'August', start_date: Time.now - 27.years, management: false)
     end
+    let!(:department) { create(:department) }
 
     before do
       post '/api/fikas',
