@@ -15,10 +15,6 @@ RSpec.describe 'GET /api/departments', type: :request do
       expect(response_json['departments'].first['name']).to be_truthy
     end
 
-    it 'is expected to have an average score' do
-      expect(response_json['departments'].first['average_score']).to eq 1
-    end
-
     it 'is expected to have a participant' do
       expect(response_json['departments'].first['participants'].first['name']).to eq participant.name
     end

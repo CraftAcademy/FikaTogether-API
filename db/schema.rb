@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2021_11_10_193730) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
-    t.integer "average_score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

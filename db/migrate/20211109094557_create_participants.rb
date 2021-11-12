@@ -2,7 +2,6 @@ class CreateParticipants < ActiveRecord::Migration[6.1]
   def change
     create_table :departments do |t|
       t.string :name
-      t.integer :average_score
       t.timestamps
     end
     create_table :participants do |t|
