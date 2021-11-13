@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 2021_11_10_193730) do
     t.index ["uid", "provider"], name: "index_admins_on_uid_and_provider", unique: true
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "fikas", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -58,10 +64,12 @@ ActiveRecord::Schema.define(version: 2021_11_10_193730) do
     t.string "email"
     t.datetime "start_date"
     t.boolean "management", default: false
+    t.bigint "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "department"
     t.integer "seniority"
+    t.index ["department_id"], name: "index_participants_on_department_id"
   end
 
+  add_foreign_key "participants", "departments"
 end
