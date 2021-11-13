@@ -4,6 +4,5 @@ RSpec.describe 'InviteService', type: :service do
   let(:participant_2) { create(:participant) }
   it 'is expected to call google api calendar service' do
     InviteService.create_invite(fika)
-    binding.pry
   end
 end

@@ -1,4 +1,4 @@
-require 'webmock/rspec'
+# require 'webmock/rspec'
 require 'spec_helper'
 require 'simplecov'
 SimpleCov.start

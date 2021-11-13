@@ -11,6 +11,7 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise_token_auth'
 gem 'google-api-client', require: ['google/apis/calendar_v3', 'googleauth']
+gem 'lockbox'
 
 group :development do
   gem 'listen', '~> 3.3'
