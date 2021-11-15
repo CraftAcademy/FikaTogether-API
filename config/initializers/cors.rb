@@ -4,7 +4,7 @@ Rails.application.config.middleware.insert_before 0,
     origins '*'
 
     resource '*',
-             header: :any,
+             headers: :any,
              expose: %w[access-token expiry token-type uid client],
              methods: %i[get post put patch delete options head]
   end

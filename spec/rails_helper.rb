@@ -2,9 +2,6 @@ require 'webmock/rspec'
 require 'spec_helper'
 require 'simplecov'
 SimpleCov.start
-# WebMock.enable!
-
-# WebMock.disable_net_connect!(allow: 'www.googleapis.com/oauth2/v4/token')
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)

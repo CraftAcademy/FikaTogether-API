@@ -6,13 +6,13 @@ default: &default
 development:
   <<: *default
   database: FikaTogether_API_development
-  username: postgres
+  # username: postgres
 
 
 test:
   <<: *default
   database: FikaTogether_API_test
-  username: postgres
+  # username: postgres
 
 
 production:
