@@ -28,7 +28,7 @@ class Api::FikasController < ApplicationController
       end
       
     rescue => error
-      render_error_messages(error['message'], error['status_code'])
+      render_error_messages(error, 400)
     end
   end
 

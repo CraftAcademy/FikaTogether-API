@@ -55,14 +55,15 @@ RSpec.describe 'POST /api/fikas', type: :request do
              headers: credentials
       end
 
-      it { is_expected.to have_http_status 401 }
+      it { is_expected.to have_http_status 400 }
 
       it 'is expected to return a message that user cannot create fikas' do
-        expect(response_json['errors'].first).to eq 'Invalid credentials.'
+        expect(response_json['message']).to eq 'We are experiencing problems with Google calendar at the moment, please try again later!'
       end
     end
 
     describe 'when google throws a bad request error', sad_create_event_mock: true do
+      let!(:participants) { 4.times { create(:participant) } }
       before do
         post '/api/fikas',
              headers: credentials
@@ -71,7 +72,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
       it { is_expected.to have_http_status 400 }
 
       it 'is expected to return a message that user cannot create fikas' do
-        expect(response_json['errors'].first).to eq 'The specified time range is empty.'
+        expect(response_json['message']).to eq 'We are experiencing problems with Google calendar at the moment, please try again later!'
       end
     end
   end

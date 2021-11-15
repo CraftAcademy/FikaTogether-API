@@ -14,12 +14,11 @@ class Fika < ApplicationRecord
     unique_pairings.uniq
   end
 
-  def create_calendar_entry
+  def create_calendar_entry    
     begin
       InviteService.create_invite(self)
-    rescue => error
-      binding.pry
-      raise StandardError.new {message:error.message, status_code:error.code}
+    rescue
+      raise StandardError.new 'We are experiencing problems with Google calendar at the moment, please try again later!' 
     end
   end
 end
