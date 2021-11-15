@@ -4,7 +4,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
   let(:credentials) { admin.create_new_auth_token }
 
   describe 'successfully' do
-    let!(:participants) { 7.times { create(:participant) } }
+    let!(:participants) { 4.times { create(:participant) } }
     
     before do
       post '/api/fikas',
