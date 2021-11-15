@@ -5,7 +5,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
 
   describe 'successfully' do
     let!(:participants) { 4.times { create(:participant) } }
-    
+
     before do
       post '/api/fikas',
            headers: credentials
@@ -19,7 +19,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
 
     it 'is expected to create six fikas' do
       expect(Fika.count).to eq 6
-    end    
+    end
   end
 
   describe 'unsuccessfully' do
@@ -45,6 +45,32 @@ RSpec.describe 'POST /api/fikas', type: :request do
 
       it 'is expected to return a message that user cannot create fikas' do
         expect(response_json['errors'].first).to eq 'You need to sign in or sign up before continuing.'
+      end
+    end
+
+    describe 'when google throws an authentication error', sad_token_mock: true do
+      before do
+        post '/api/fikas',
+             headers: credentials
+      end
+
+      it { is_expected.to have_http_status 401 }
+
+      it 'is expected to return a message that user cannot create fikas' do
+        expect(response_json['errors'].first).to eq 'Invalid credentials.'
+      end
+    end
+
+    describe 'when google throws a bad request error', sad_create_event_mock: true do
+      before do
+        post '/api/fikas',
+             headers: credentials
+      end
+
+      it { is_expected.to have_http_status 400 }
+
+      it 'is expected to return a message that user cannot create fikas' do
+        expect(response_json['errors'].first).to eq 'The specified time range is empty.'
       end
     end
   end

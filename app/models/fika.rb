@@ -18,6 +18,7 @@ class Fika < ApplicationRecord
     begin
       InviteService.create_invite(self)
     rescue => error
+      
     end
   end
 end
