@@ -1,6 +1,6 @@
 module InviteService
   def self.create_invite(fika)
-    authorize_client
+    authorize_client # this can return an error
     get_attendees(fika)
     format_event(fika)
     event = @client.insert_event(
@@ -8,8 +8,7 @@ module InviteService
       @event_data,
       send_notifications: false,
       conference_data_version: 1
-    )
-    binding.pry
+    ) # this can return an error
   end
 
   private_class_method def self.authorize_client

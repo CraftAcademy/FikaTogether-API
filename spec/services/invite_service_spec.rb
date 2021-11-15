@@ -3,7 +3,7 @@ RSpec.describe 'InviteService', type: :service do
   let(:participant_1) { create(:participant) }
   let(:participant_2) { create(:participant) }
 
-  subject { InviteService.create_invite(fika) }
+  subject! { InviteService.create_invite(fika).to_h }
 
   # before do
   #   InviteService.create_invite(fika)
