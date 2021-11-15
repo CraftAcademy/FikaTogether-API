@@ -18,7 +18,6 @@ class Fika < ApplicationRecord
     begin
       InviteService.create_invite(self)
     rescue => error
-      binding.pry  
     end
   end
 end
