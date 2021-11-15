@@ -9,6 +9,7 @@ module InviteService
       send_notifications: false,
       conference_data_version: 1
     )
+    binding.pry
   end
 
   private_class_method def self.authorize_client
