@@ -18,7 +18,8 @@ class Fika < ApplicationRecord
     begin
       InviteService.create_invite(self)
     rescue => error
-      
+      binding.pry
+      raise StandardError.new {message:error.message, status_code:error.code}
     end
   end
 end

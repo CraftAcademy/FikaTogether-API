@@ -49,6 +49,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
     end
 
     describe 'when google throws an authentication error', sad_token_mock: true do
+      let!(:participants) { 4.times { create(:participant) } }
       before do
         post '/api/fikas',
              headers: credentials
