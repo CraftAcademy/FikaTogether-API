@@ -47,7 +47,7 @@ RSpec.describe 'POST /api/participants', type: :request do
       end
     end
 
-    describe 'when there are not a matching department' do
+    describe 'when there is not a matching department' do
       before do
         post '/api/participants',
              params: { participant: { name: 'John Snow',
