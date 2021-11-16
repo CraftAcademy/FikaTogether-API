@@ -46,5 +46,23 @@ RSpec.describe 'POST /api/participants', type: :request do
         expect(response_json['errors'].first).to eq 'You need to sign in or sign up before continuing.'
       end
     end
+
+    describe 'when there are not a matching department' do
+      before do
+        post '/api/participants',
+             params: { participant: { name: 'John Snow',
+                                      email: 'John@Fika.com',
+                                      start_date: '2000-01-01',
+                                      department: 'HR',
+                                      management: false,
+                                      seniority: 2 } },
+             headers: credentials
+      end
+      it { is_expected.to have_http_status 422 }
+
+      it 'is expected to return a message that user cannot create fikas' do
+        expect(response_json['errors']).to eq 'Sorry that department does not exist.'
+      end
+    end
   end
 end

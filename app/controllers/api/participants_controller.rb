@@ -9,7 +9,7 @@ class Api::ParticipantsController < ApplicationController
     if participant.persisted?
       render json: { message: 'You successfully added participant to the department.' }, status: 201
     else
-      render json: { errors: participant.errors.full_messages.to_sentences }, status: 422
+      render json: { errors: 'Sorry that department does not exist.' }, status: 422
     end
   end
 
