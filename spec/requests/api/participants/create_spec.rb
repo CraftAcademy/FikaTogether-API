@@ -1,4 +1,4 @@
-RSpec.describe Participants::Create do
+RSpec.describe 'POST /api/participants', type: :request do
   subject { response }
   let(:admin) { create(:admin) }
   let(:credentials) { admin.create_new_auth_token }
