@@ -12,7 +12,7 @@ describe Fikas::IndexSerializer, type: :serializer do
   end
 
   it 'is expected to contain relevant keys' do
-    expected_keys = %w[id formated_start_date formated_end_date similarity participants]
+    expected_keys = %w[id start_date similarity participants]
     expect(subject['fikas'].last.keys).to match expected_keys
   end
 
@@ -20,8 +20,7 @@ describe Fikas::IndexSerializer, type: :serializer do
     expect(subject['fikas'].last).to match(
       {
         'id' => an_instance_of(Integer),
-        'formated_start_date' => an_instance_of(String),
-        'formated_end_date' => an_instance_of(String),
+        'start_date' => an_instance_of(String),
         'similarity' => an_instance_of(Float),
         'participants' => an_instance_of(Array)
       }

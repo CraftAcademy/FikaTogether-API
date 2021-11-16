@@ -17,11 +17,7 @@ RSpec.describe 'GET /api/fikas', type: :request do
     end
 
     it 'is expected to return a start date' do
-      expect(response_json['fikas'].last['formated_start_date']).to eq '25/1 09:00'
-    end
-
-    it 'is expected to return a start date' do
-      expect(response_json['fikas'].last['formated_end_date']).to eq '25/1 09:30'
+      expect(response_json['fikas'].last['start_date']).to eq '25/1/2017 09:00'
     end
 
     it 'is expected to return two participants' do
