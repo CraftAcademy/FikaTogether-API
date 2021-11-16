@@ -1,0 +1,42 @@
+{
+  "kind": "calendar#event",
+  "etag": "3273686551590000",
+  "id": "908sku07n4umfmmjftqi8302n8",
+  "status": "confirmed",
+  "htmlLink": "https://www.google.com/calendar/event?eid=OTA4c2t1MDduNHVtZm1tamZ0cWk4MzAybjggdGhpc2lzY29kZUB0aGlzLWlzLWNvZGUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+  "created": "2021-11-13T22:41:15.000Z",
+  "updated": "2021-11-13T22: 41: 15.795Z",
+  "summary": "Fika for Daniel Gulgowski and Mrs. Perry Runolfsson",
+  "creator": {
+    "email": "thisiscode@this-is-code.iam.gserviceaccount.com",
+    "self": true
+  },
+  "organizer": {
+    "email": "thisiscode@this-is-code.iam.gserviceaccount.com",
+    "self": true
+  },
+  "start": {
+    "dateTime": "2021-11-13T23: 41: 15+01: 00",
+    "timeZone": "UTC"
+  },
+  "end": {
+    "dateTime": "2021-11-14T00: 26: 15+01: 00",
+    "timeZone": "UTC"
+  },
+  "iCalUID": "908sku07n4umfmmjftqi8302n8@google.com",
+  "sequence": 0,
+  "attendees": [
+    {
+      "email": "jestine.huel@watsica.com",
+      "responseStatus": "needsAction"
+    },
+    {
+      "email": "octavia_schulist@schamberger-ziemann.net",
+      "responseStatus": "needsAction"
+    }
+  ],
+  "reminders": {
+    "useDefault": true
+  },
+  "eventType": "default"
+}
