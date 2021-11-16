@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   namespace :api do
     resources :fikas, only: [:index, :create]
     resources :departments, only: [:index]
+    resources :participants, only: [:create]
   end
 end
