@@ -16,12 +16,7 @@ class Api::ParticipantsController < ApplicationController
   def destroy
     participant = Participant.find( params[:id] )
     participant.destroy
-
-    if participant.destroyed?
-      render json: { message: 'You successfully deleted the participant from the department.' }, status: 202
-    else
-      render json: { errors: 'Sorry that participant does not exist.' }, status: 422
-    end
+    render json: { message: 'You successfully deleted the participant from the department.' }, status: 202
   end
 
   private

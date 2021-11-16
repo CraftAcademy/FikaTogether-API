@@ -5,7 +5,7 @@ let(:credentials) { admin.create_new_auth_token }
 
   describe 'successful' do
     let!(:department) { create(:department, name: 'HR') }
-    let!(:participant) { create(:participant, department: department, name: "John Snow") }
+    let!(:participant) { create(:participant, department: department) }
     before do
       delete "/api/participants/#{participant.id}",
            headers: credentials
