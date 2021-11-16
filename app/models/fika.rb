@@ -3,6 +3,14 @@ class Fika < ApplicationRecord
   has_and_belongs_to_many :participants, join_table: 'fikas_participants', presence: true
   after_validation :create_calendar_entry
 
+  def formated_start_date
+    start_date.strftime('%-d/%-m %H:%M')    
+  end
+
+  def formated_end_date
+    end_date.strftime('%-d/%-m %H:%M')    
+  end
+
   private
 
   def self.participants_uniq_matcher
@@ -21,4 +29,6 @@ class Fika < ApplicationRecord
       raise StandardError.new 'We are experiencing problems with Google calendar at the moment, please try again later!' 
     end
   end
+
+  
 end
