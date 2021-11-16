@@ -25,7 +25,7 @@ module SimilarityService
   end
 
   private_class_method def self.normalize_department
-    if @fika.pluck(:department).uniq.count > 1
+    if @fika.first.department.name != @fika.last.department.name
       @vector_1.push(1.0)
       @vector_2.push(0.0)
     else

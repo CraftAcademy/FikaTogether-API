@@ -1,14 +1,18 @@
 RSpec.describe 'SimilarityService', type: :service do
   describe 'when two participants have identical properties' do
     let!(:participant_1) do
-      create(:participant, name: 'Fraser', start_date: Time.now - 2.years, management: false)
+      create(:participant, name: 'Fraser', start_date: Time.now - 2.years,
+                           management: false)
     end
 
     let!(:participant_2) do
-      create(:participant, name: 'Max', start_date: Time.now - 2.years, management: false)
+      create(:participant, name: 'Max', start_date: Time.now - 2.years,
+                           management: false)
     end
 
     it 'is expected to return a similarity score that is very nearly 1' do
+      participant_1.department.name = 'Sanitation'
+      participant_2.department.name = 'Sanitation'
       expect(SimilarityService.cosine_similarity([participant_1, participant_2])).to be_within(0.00001).of(1.0)
     end
   end
