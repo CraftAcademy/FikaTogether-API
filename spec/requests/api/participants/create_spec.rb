@@ -4,7 +4,7 @@ RSpec.describe 'POST /api/participants', type: :request do
   let(:credentials) { admin.create_new_auth_token }
 
   describe 'successful' do
-    let!(:department) { create(:department) }
+    let!(:department) { create(:department, name: "HR") }
 
     before do
       post '/api/participants',
