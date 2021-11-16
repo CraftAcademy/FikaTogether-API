@@ -1,0 +1,1 @@
+Admin.create(name: "Admin", email: "test@email.com", password: "password")
