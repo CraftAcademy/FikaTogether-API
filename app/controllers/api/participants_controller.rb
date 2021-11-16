@@ -1,5 +1,5 @@
 class Api::ParticipantsController < ApplicationController
-  before_action :authenticate_admin!, only: :create
+  before_action :authenticate_admin!, only: [:create, :destroy]
 
   def create
     participant = Participant.new(participant_params)
@@ -10,6 +10,17 @@ class Api::ParticipantsController < ApplicationController
       render json: { message: 'You successfully added participant to the department.' }, status: 201
     else
       render json: { errors: 'Sorry that department does not exist.' }, status: 422
+    end
+  end
+
+  def destroy
+    participant = Participant.find( params[:id] )
+    participant.destroy
+
+    if participant.destroyed?
+      render json: { message: 'You successfully deleted the participant from the department.' }, status: 202
+    else
+      render json: { errors: 'Sorry that participant does not exist.' }, status: 422
     end
   end
 
