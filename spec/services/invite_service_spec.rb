@@ -17,7 +17,6 @@ RSpec.describe 'InviteService', type: :service do
 
   describe 'unsuccessfully' do
     it 'is expected to return http status of a 401 status response when unauthorized', sad_token_mock: true do
-      # this does not pass if we do not first test that it raises an error for some reason
       expect { create(:fika) }.to raise_error("We are experiencing problems with Google calendar at the moment, please try again later!")
       expect(
         @sad_token_response.response.status.first
