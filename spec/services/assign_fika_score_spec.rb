@@ -16,12 +16,12 @@ RSpec.describe 'AssignScoreService', type: :request do
     end
 
     it 'is expected that participant 1 will have a fika score of 5' do
-      expect(participant_1.fika_score).to eq 5
+      expect(Participant.last.fika_score).to eq 5
     end
   end
 
   describe 'when the participants have a delta between their start dates of over 5 years' do
-    let!(:participant_2) { create(:participant, start_date: Time.now - 6.years) }
+    let!(:participant_2) { create(:participant, start_date: Time.now - 6.years, fika_score: 0) }
     before do
       post '/api/fikas',
            headers: credentials
@@ -32,12 +32,12 @@ RSpec.describe 'AssignScoreService', type: :request do
     end
 
     it 'is expected that participant 1 will have a fika score of 6' do
-      expect(participant_1.fika_score).to eq 6
+      expect(Participant.first.fika_score).to eq 6
     end
   end
 
   describe 'when the participants have a delta between their start dates of over 10 years' do
-    let!(:participant_2) { create(:participant, start_date: Time.now - 12.years) }
+    let!(:participant_2) { create(:participant, start_date: Time.now - 12.years, fika_score: 0) }
     before do
       post '/api/fikas',
            headers: credentials
@@ -48,7 +48,7 @@ RSpec.describe 'AssignScoreService', type: :request do
     end
 
     it 'is expected that participant 1 will have a fika score of 7' do
-      expect(participant_1.fika_score).to eq 7
+      expect(Participant.first.fika_score).to eq 7
     end
   end
 end
