@@ -9,8 +9,10 @@ RSpec.describe 'POST /api/fikas', type: :request do
     before do
       post '/api/fikas',
           params: {
-            date: '2021-11-24',
-            time_slots: ["11:00-11:30", "15:00-15:30"]
+            fika: {
+              date: '2021-11-24',
+              time_slots: ['11:00', '15:00']  
+            }
           },
           headers: credentials
     end

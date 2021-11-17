@@ -10,8 +10,10 @@ class Api::FikasController < ApplicationController
     end
   end
 
-  def create
+  def create    
     fikas = Fika.participants_uniq_matcher
+    # assign dates to each pair
+    fikas_with_dates = ScheduleService.match(fikas, params[:fika][:date], params[:fika][:time_slots])
     fikas.each do |fikas_participants|
       similarity = SimilarityService.cosine_similarity(fikas_participants)
       Fika.create(start_date: Time.now,
