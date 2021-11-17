@@ -1,4 +1,4 @@
 module ScoreService
-  def self.assigning(score)
-   binding.pry
-       end
+  def self.assigning_score
+  end
+end

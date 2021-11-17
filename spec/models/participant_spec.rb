@@ -15,7 +15,7 @@ RSpec.describe Participant, type: :model do
     it { should allow_value(true).for(:management) }
     it { should allow_value(false).for(:management) }
     it { is_expected.to validate_presence_of :seniority }
-    it { should allow_value(0).for(:fika_score) }
+    it { is_expected.to validate_presence_of :fika_score }
   end
 
   describe 'Associations' do
