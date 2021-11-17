@@ -8,7 +8,13 @@ RSpec.describe 'POST /api/fikas', type: :request do
 
     before do
       post '/api/fikas',
-           headers: credentials
+          params: {
+            fika: {
+              date: '2021-11-24',
+              time_slots: ['11:00', '15:00']  
+            }
+          },
+          headers: credentials
     end
 
     it { is_expected.to have_http_status 201 }
@@ -19,6 +25,14 @@ RSpec.describe 'POST /api/fikas', type: :request do
 
     it 'is expected to create six fikas' do
       expect(Fika.count).to eq 6
+    end
+
+    it 'is expected to create fikas for the given date' do
+      expect(Fika.first.start_date).to eq '2021-11-24'
+    end
+
+    it 'is expected to create fikas for the given time slots' do
+      expect(Fika.first.start_date).to eq '2021-11-24, 15:00-15:30' # or '2021-11-24, 11:00-11:30'
     end
   end
 
