@@ -6,7 +6,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
   describe 'successfully' do
     let!(:participants) { 4.times { create(:participant) } }
 
-    before do
+    before do 
       post '/api/fikas',
           params: {
             fika: {
