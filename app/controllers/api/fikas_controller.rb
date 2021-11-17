@@ -2,7 +2,7 @@ class Api::FikasController < ApplicationController
   before_action :authenticate_admin!, only: :create
 
   def index
-    fikas = Fika.all
+    fikas = Fika.order(:similarity)
     if fikas.any?
       render json: fikas, each_serializer: Fikas::IndexSerializer
     else
@@ -11,25 +11,22 @@ class Api::FikasController < ApplicationController
   end
 
   def create
-    begin
-      fikas = Fika.participants_uniq_matcher
-      fikas.each do |fikas_participants|
-        similarity = SimilarityService.cosine_similarity(fikas_participants)
-        Fika.create(start_date: Time.now,
-                    end_date: Time.now + 30.minutes,
-                    participants: fikas_participants,
-                    similarity: similarity)
-      end
-  
-      if fikas.any?
-        render json: { message: 'Fikas successfully created' }, status: 201
-      else
-        render_error_messages('There are no participants in the database', 404)
-      end
-      
-    rescue => error
-      render_error_messages(error, 400)
+    fikas = Fika.participants_uniq_matcher
+    fikas.each do |fikas_participants|
+      similarity = SimilarityService.cosine_similarity(fikas_participants)
+      Fika.create(start_date: Time.now,
+                  end_date: Time.now + 30.minutes,
+                  participants: fikas_participants,
+                  similarity: similarity)
     end
+
+    if Fika.any?
+      render json: { message: 'Fikas successfully created' }, status: 201
+    else
+      render_error_messages('There are no participants in the database', 404)
+    end
+  rescue StandardError => e
+    render_error_messages(e, 400)
   end
 
   private
