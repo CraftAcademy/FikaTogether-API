@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_131526) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "similarity"
-    t.integer "fika_score", default: [5, 5], array: true
+    t.integer "score", default: [5, 5], array: true
   end
 
   create_table "fikas_participants", id: false, force: :cascade do |t|

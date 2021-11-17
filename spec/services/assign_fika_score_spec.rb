@@ -12,7 +12,7 @@ RSpec.describe 'AssignScoreService', type: :request do
            headers: credentials
     end
     it 'is expected that the fika score will be split evenly between the participants' do
-      expect(Fika.last.fika_score).to eq([5, 5])
+      expect(Fika.last.score).to eq([5, 5])
     end
 
     it 'is expected that participant 1 will have a fika score of 5' do
@@ -28,7 +28,7 @@ RSpec.describe 'AssignScoreService', type: :request do
     end
 
     it 'is expected that the fika score will not be split evenly' do
-      expect(Fika.last.fika_score).to eq([6, 4])
+      expect(Fika.last.score).to eq([6, 4])
     end
 
     it 'is expected that participant 1 will have a fika score of 6' do
@@ -44,7 +44,7 @@ RSpec.describe 'AssignScoreService', type: :request do
     end
 
     it 'is expected that the fika score will not be split evenly' do
-      expect(Fika.last.fika_score).to eq([7, 3])
+      expect(Fika.last.score).to eq([7, 3])
     end
 
     it 'is expected that participant 1 will have a fika score of 7' do

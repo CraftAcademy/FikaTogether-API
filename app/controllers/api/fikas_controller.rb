@@ -18,7 +18,7 @@ class Api::FikasController < ApplicationController
       end_date: Time.now + 30.minutes,
       participants: fikas_participants,
       similarity: similarity,
-      fika_score: ScoreService.fika_score(fikas_participants))
+      score: ScoreService.score(fikas_participants))
     end
 
     if Fika.any?
