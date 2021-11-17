@@ -28,13 +28,13 @@ RSpec.describe 'AssignScoreService', type: :service do
   end
 
   describe 'when the participants have a delta between their start dates of over 10 years' do
-    let(:participant_1) { create(:participant, start_date: DateTime.now) }                            #For some reason the participants we create here are not being used when
+    let!(:participant_1) { create(:participant, start_date: DateTime.now) }                            #For some reason the participants we create here are not being used when
     let!(:participant_2) { create(:participant, name: 'Fraser', start_date: DateTime.now - 12.years) } #we run the assign scores service?? 
+    
     let(:fika) { create(:fika, participants: [participant_1, participant_2]) }
-    let!(:department) { create(:department, name: 'HR') }
-
+    
     it 'is expected that the fika score will not be split evenly' do
-      
+      binding.pry
       expect(fika.fika_score).to eq([7, 3])
     end
 

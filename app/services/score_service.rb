@@ -1,14 +1,18 @@
 module ScoreService
   def self.assign_score(fika)
-    # participant_1 = fika.participants.first
-    # participant_2 = fika.participants.last
-
+    difference_in_days = calc_date_difference(fika)
+    give_score(difference_in_days)
+  end
+  
+  def self.calc_date_difference(fika)
     participant_1 = fika[0]
     participant_2 = fika[1]
-
     delta = (participant_1.start_date - participant_2.start_date).to_i
     result = Math.sqrt(delta * delta).to_i
-    difference_in_days = result / (60 * 60 * 24)
+    result / (60 * 60 * 24)
+  end
+
+  def self.give_score(difference_in_days)
     case difference_in_days
     when 0..1825
       [5, 5]
