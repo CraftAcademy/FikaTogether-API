@@ -34,7 +34,7 @@ RSpec.describe 'AssignScoreService', type: :service do
     let!(:department) { create(:department, name: 'HR') }
 
     it 'is expected that the fika score will not be split evenly' do
-      binding.pry
+      
       expect(fika.fika_score).to eq([7, 3])
     end
 

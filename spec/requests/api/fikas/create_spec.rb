@@ -15,6 +15,7 @@ RSpec.describe 'POST /api/fikas', type: :request do
 
     it 'is expected to return a message' do
       expect(response_json['message']).to eq 'Fikas successfully created'
+      
     end
 
     it 'is expected to create six fikas' do
