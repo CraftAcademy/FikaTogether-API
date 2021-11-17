@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_131526) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "seniority"
-    t.integer "fika_score"
+    t.integer "fika_score", default: 0
     t.index ["department_id"], name: "index_participants_on_department_id"
   end
 

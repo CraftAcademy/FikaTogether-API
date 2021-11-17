@@ -6,5 +6,6 @@ FactoryBot.define do
     management { Faker::Boolean.boolean }
     department
     seniority { 2 }
+    fika_score { Faker::Number.between(from: 1, to: 5) }
   end
 end

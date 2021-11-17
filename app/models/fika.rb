@@ -1,5 +1,5 @@
 class Fika < ApplicationRecord
-  validates_presence_of :start_date, :end_date
+  validates_presence_of :start_date, :end_date, :fika_score
   has_and_belongs_to_many :participants, join_table: 'fikas_participants', presence: true
   after_validation :create_calendar_entry
 
