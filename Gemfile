@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'aws-sdk-s3'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise_token_auth'
 gem 'google-api-client', require: ['google/apis/calendar_v3', 'googleauth']

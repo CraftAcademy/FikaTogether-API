@@ -67,6 +67,22 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.532.0)
+    aws-sdk-core (3.122.1)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.525.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.51.0)
+      aws-sdk-core (~> 3, >= 3.122.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.106.0)
+      aws-sdk-core (~> 3, >= 3.122.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.4.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
@@ -156,6 +172,7 @@ GEM
       rainbow (>= 2.0.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
+    jmespath (1.4.0)
     jsonapi-renderer (0.2.2)
     jwt (2.3.0)
     listen (3.7.0)
@@ -300,6 +317,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
+  aws-sdk-s3
   bootsnap (>= 1.4.4)
   devise_token_auth
   factory_bot_rails
