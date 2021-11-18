@@ -13,7 +13,3 @@ Participant.find_or_create_by(name: 'Oliver Ochman', email: 'Oliver@craft.se',
 participants = Participant.all
 file = URI.open('https://pickaface.net/gallery/avatar/unr_test_180612_1021_b05p.png')
 participants.first.avatar.attach(io: file, filename: 'avatar.png', content_type: 'image/png')
-
-# participants.each do |participant|
-#   participant.avatar.attach(io: file, filename: 'avatar.png', content_type: 'image/png')
-# end
