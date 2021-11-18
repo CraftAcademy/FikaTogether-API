@@ -21,9 +21,9 @@ module ScoreService
     when 0..1825
       [5, 5]
     when 1826..3650
-      calc_date_difference >= 0 ? [6, 4] : [4, 6]
+      is_positive(calc_date_difference) ? [6, 4] : [4, 6]
     else
-      calc_date_difference >= 0 ? [7, 3] : [3, 7]
+      is_positive(calc_date_difference) ? [7, 3] : [3, 7]
     end
   end
 
@@ -36,5 +36,9 @@ module ScoreService
 
     participant_1.save
     participant_2.save
+  end
+
+  def self.is_positive(num)
+    num >= 0
   end
 end
