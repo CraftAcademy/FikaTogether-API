@@ -6,5 +6,8 @@ FactoryBot.define do
     management { Faker::Boolean.boolean }
     department
     seniority { 2 }
+    after(:build) do |participant|
+      participant.avatar.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'test.png')), filename: 'test.png', content_type: 'image/png')
+    end
   end
 end
