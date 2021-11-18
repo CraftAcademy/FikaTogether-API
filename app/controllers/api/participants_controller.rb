@@ -2,14 +2,14 @@ class Api::ParticipantsController < ApplicationController
   before_action :authenticate_admin!, only: [:create, :destroy]
 
   def create
-    params_image = params[:participant][:avatar]
+    params_avatar = params[:participant][:avatar]
 
     participant = Participant.new(participant_params)
     participant.department = Department.find_by(name: params[:participant][:department])
     participant.save
 
-    if participant.persisted? && params_image.present?
-      DecodeService.attach_image(params_image, participant.image)
+    if participant.persisted? && params_avatar.present?
+      DecodeService.attach_image(params_avatar, participant.avatar)
     end
 
     if participant.persisted?
