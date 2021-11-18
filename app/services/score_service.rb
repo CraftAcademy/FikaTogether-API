@@ -21,17 +21,9 @@ module ScoreService
     when 0..1825
       [5, 5]
     when 1826..3650
-      if calc_date_difference >= 0
-        [6, 4]
-      else
-        [4, 6]
-      end
-    when 3651..Float::INFINITY
-      if calc_date_difference >= 0
-        [7, 3]
-      else
-        [3, 7]
-      end
+      calc_date_difference >= 0 ? [6, 4] : [4, 6]
+    else
+      calc_date_difference >= 0 ? [7, 3] : [3, 7]
     end
   end
 
