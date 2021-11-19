@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_103528) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "similarity"
+    t.integer "score", default: [5, 5], array: true
   end
 
   create_table "fikas_participants", id: false, force: :cascade do |t|
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_103528) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "seniority"
+    t.integer "fika_score", default: 0
     t.index ["department_id"], name: "index_participants_on_department_id"
   end
 

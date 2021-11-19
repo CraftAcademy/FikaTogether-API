@@ -38,4 +38,4 @@ blocks:
           commands:
             - ./cc-test-reporter after-build --exit-code 1
       secrets:
-        - name: FT_Master_Key
+        - name: FIKA_TOGETHER

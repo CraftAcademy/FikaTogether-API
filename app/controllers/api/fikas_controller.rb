@@ -15,9 +15,10 @@ class Api::FikasController < ApplicationController
     fikas.each do |fikas_participants|
       similarity = SimilarityService.cosine_similarity(fikas_participants)
       Fika.create(start_date: Time.now,
-                  end_date: Time.now + 30.minutes,
-                  participants: fikas_participants,
-                  similarity: similarity)
+      end_date: Time.now + 30.minutes,
+      participants: fikas_participants,
+      similarity: similarity,
+      score: ScoreService.score(fikas_participants))
     end
 
     if Fika.any?
