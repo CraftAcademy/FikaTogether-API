@@ -1,3 +1,3 @@
 class Participants::IndexSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :fika_score
 end
