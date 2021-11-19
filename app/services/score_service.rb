@@ -1,4 +1,7 @@
 module ScoreService
+  UNDER_TEN_YEARS = [6, 4]
+  OVER_TEN_YEARS = [7, 3]
+
   def self.score(fika)
     calc_date_difference = calc_date_difference(fika)
     difference_in_years = difference_in_years(calc_date_difference)
@@ -12,21 +15,17 @@ module ScoreService
   end
 
   def self.difference_in_years(calc_date_difference)
-    (calc_date_difference / (60 * 60 * 24 * 365)).abs 
+    (calc_date_difference / (60 * 60 * 24 * 365)).abs
   end
 
   def self.assign_scores(difference_in_years, calc_date_difference)
     case difference_in_years
-    when 0..5 #years
+    when 0..5 # years
       [5, 5]
-    when 5..10 #years
-      is_positive(calc_date_difference) ? [6, 4] : [4, 6]
+    when 5..10 # years
+      calc_date_difference.positive? ? UNDER_TEN_YEARS : UNDER_TEN_YEARS.reverse
     else
-      is_positive(calc_date_difference) ? [7, 3] : [3, 7]
+      calc_date_difference.positive? ? OVER_TEN_YEARS : OVER_TEN_YEARS.reverse
     end
-  end
-
-  def self.is_positive(num)
-    num >= 0
   end
 end

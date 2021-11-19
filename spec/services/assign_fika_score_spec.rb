@@ -3,7 +3,7 @@ RSpec.describe 'AssignScoreService', type: :request do
   let(:admin) { create(:admin) }
   let(:credentials) { admin.create_new_auth_token }
 
-  describe 'when the participants have a delta between their start dates of under 5 years' do
+  describe 'when the participants have a difference between their start dates of under 5 years' do
     let!(:participant_2) { create(:participant, start_date: Time.now - 1.years, fika_score: 0) }
     before do
       post '/api/fikas',
@@ -18,7 +18,7 @@ RSpec.describe 'AssignScoreService', type: :request do
     end
   end
 
-  describe 'when the participants have a delta between their start dates of over 5 years' do
+  describe 'when the participants have a difference between their start dates of over 5 years' do
     let!(:participant_2) { create(:participant, start_date: Time.now - 6.years, fika_score: 0) }
     before do
       post '/api/fikas',
@@ -34,7 +34,7 @@ RSpec.describe 'AssignScoreService', type: :request do
     end
   end
 
-  describe 'when the participants have a delta between their start dates of over 10 years' do
+  describe 'when the participants have a difference between their start dates of over 10 years' do
     let!(:participant_2) { create(:participant, start_date: Time.now - 12.years, fika_score: 0) }
     before do
       post '/api/fikas',
