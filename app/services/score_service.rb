@@ -2,7 +2,7 @@ module ScoreService
   def self.score(fika)
     calc_date_difference = calc_date_difference(fika)
     difference_in_years = difference_in_years(calc_date_difference)
-    assign_scores = assign_scores(difference_in_years, calc_date_difference)
+    assign_scores(difference_in_years, calc_date_difference)
   end
 
   def self.calc_date_difference(fika)
