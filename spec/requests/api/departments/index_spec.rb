@@ -19,8 +19,8 @@ RSpec.describe 'GET /api/departments', type: :request do
       expect(response_json['departments'].first['participants'].first['name']).to eq participant.name
     end
 
-    it 'is expected to have a participants avatar' do      
-      expect(response_json['departments'].first['participants'].first).to include "avatar"
+    it 'is expected to have a participants avatar' do
+      expect(response_json['departments'].first['participants'].first).to include 'avatar'
     end
   end
 
