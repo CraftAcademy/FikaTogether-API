@@ -19,13 +19,14 @@ module ScoreService
   end
 
   def self.assign_scores(difference_in_years, calc_date_difference)
-    case difference_in_years
-    when 0..5 # years
-      [5, 5]
-    when 5..10 # years
-      calc_date_difference.positive? ? UNDER_TEN_YEARS : UNDER_TEN_YEARS.reverse
-    else
-      calc_date_difference.positive? ? OVER_TEN_YEARS : OVER_TEN_YEARS.reverse
-    end
+    score = case difference_in_years
+            when 0..5 # years
+              [5, 5]
+            when 5..10 # years
+              [4, 6]
+            else
+              [3, 7]
+            end
+    score.reverse if calc_date_difference.positive?
   end
 end
