@@ -1,7 +1,4 @@
 module ScoreService
-  UNDER_TEN_YEARS = [6, 4]
-  OVER_TEN_YEARS = [7, 3]
-
   def self.score(fika)
     calc_date_difference = calc_date_difference(fika)
     difference_in_years = difference_in_years(calc_date_difference)
