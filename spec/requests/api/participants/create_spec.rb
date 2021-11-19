@@ -19,8 +19,7 @@ RSpec.describe 'POST /api/participants', type: :request do
 
     it { is_expected.to have_http_status 201 }
 
-    it 'is expected to return a message' do
-      
+    it 'is expected to return a message' do  
       expect(response_json['message']).to eq 'You successfully added participant to the department.'
     end
 
