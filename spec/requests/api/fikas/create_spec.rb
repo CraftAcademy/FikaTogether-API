@@ -18,7 +18,6 @@ RSpec.describe 'POST /api/fikas', type: :request do
     end
 
     it 'is expected to create six fikas' do
-      binding.pry
       expect(Fika.count).to eq 6
     end
   end

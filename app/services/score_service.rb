@@ -24,6 +24,10 @@ module ScoreService
             else
               [3, 7]
             end
-    score.reverse if calc_date_difference.positive?
+    if calc_date_difference.positive?
+      score.reverse
+    else
+      score
+    end
   end
 end
