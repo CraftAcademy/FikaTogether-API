@@ -2,6 +2,14 @@ RSpec.describe 'POST /api/participants', type: :request do
   subject { response }
   let(:admin) { create(:admin) }
   let(:credentials) { admin.create_new_auth_token }
+  let(:image) do
+    {
+      type: "image",
+      encoder: "iphone_picture",
+      data: "hjdehjdhej",
+      extension: "png",
+    }
+  end
 
   describe 'successful' do
     let!(:department) { create(:department, name: 'HR') }
@@ -13,7 +21,8 @@ RSpec.describe 'POST /api/participants', type: :request do
                                     start_date: '2000-01-01',
                                     department: 'HR',
                                     management: false,
-                                    seniority: 2 } },
+                                    seniority: 2,
+                                    avatar: image } },
            headers: credentials
     end
 

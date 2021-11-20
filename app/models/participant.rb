@@ -4,4 +4,5 @@ class Participant < ApplicationRecord
 
   has_and_belongs_to_many :fikas, join_table: 'fikas_participants'
   belongs_to :department
+  has_one_attached :avatar
 end

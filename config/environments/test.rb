@@ -29,4 +29,6 @@ Rails.application.configure do
   config.active_support.disallowed_deprecation = :raise
 
   config.active_support.disallowed_deprecation_warnings = []
+
+  Rails.application.routes.default_url_options[:host] = 'test.com'
 end

@@ -24,7 +24,6 @@ module ScoreService
             else
               [3, 7]
             end
-
     if calc_date_difference.positive?
       score.reverse
     else

@@ -2,9 +2,15 @@ class Api::ParticipantsController < ApplicationController
   before_action :authenticate_admin!, only: [:create, :destroy]
 
   def create
+    params_avatar = params[:participant][:avatar]
+
     participant = Participant.new(participant_params)
     participant.department = Department.find_by(name: params[:participant][:department])
     participant.save
+
+    if participant.persisted? && params_avatar.present?
+      DecodeService.attach_image(params_avatar, participant.avatar)
+    end
 
     if participant.persisted?
       render json: { message: 'You successfully added participant to the department.' }, status: 201

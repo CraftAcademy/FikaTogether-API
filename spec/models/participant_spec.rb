@@ -18,6 +18,12 @@ RSpec.describe Participant, type: :model do
     it { is_expected.to validate_presence_of :fika_score }
   end
 
+  describe 'Avatar' do
+    subject { create(:participant).avatar }
+
+    it { is_expected.to be_an_instance_of(ActiveStorage::Attached::One) }
+  end
+
   describe 'Associations' do
     it { is_expected.to have_and_belong_to_many(:fikas) }
     it { is_expected.to belong_to(:department) }

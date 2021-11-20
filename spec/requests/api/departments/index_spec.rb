@@ -18,6 +18,10 @@ RSpec.describe 'GET /api/departments', type: :request do
     it 'is expected to have a participant' do
       expect(response_json['departments'].first['participants'].first['name']).to eq participant.name
     end
+
+    it 'is expected to have a participants avatar' do
+      expect(response_json['departments'].first['participants'].first).to include 'avatar'
+    end
   end
 
   describe 'when there are no departments in the database' do
