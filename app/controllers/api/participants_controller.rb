@@ -3,6 +3,7 @@ class Api::ParticipantsController < ApplicationController
 
   def create
     params_avatar = params[:participant][:avatar]
+    
     participant = Participant.new(participant_params)
     participant.department = Department.find_by(name: params[:participant][:department])
     participant.save
