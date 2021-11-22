@@ -1,5 +1,5 @@
 class Api::ParticipantsController < ApplicationController
-  before_action :authenticate_admin!, only: [:create, :destroy]
+  before_action :authenticate_admin!, only: %i[create destroy]
 
   def create
     params_avatar = params[:participant][:avatar]
@@ -8,9 +8,7 @@ class Api::ParticipantsController < ApplicationController
     participant.department = Department.find_by(name: params[:participant][:department])
     participant.save
 
-    if participant.persisted? && params_avatar.present?
-      DecodeService.attach_image(params_avatar, participant.avatar)
-    end
+    DecodeService.attach_image(params_avatar, participant.avatar) if participant.persisted? && params_avatar.present?
 
     if participant.persisted?
       render json: { message: 'You successfully added participant to the department.' }, status: 201
@@ -20,7 +18,7 @@ class Api::ParticipantsController < ApplicationController
   end
 
   def destroy
-    participant = Participant.find( params[:id] )
+    participant = Participant.find(params[:id])
     participant.destroy
     render json: { message: 'You successfully deleted the participant from the department.' }, status: 202
   end
