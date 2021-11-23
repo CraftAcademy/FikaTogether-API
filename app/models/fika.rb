@@ -22,13 +22,15 @@ class Fika < ApplicationRecord
   end
 
   def assign_participant_fika_scores
+    binding.pry
     participant_1 = Fika.last.participants[0]
     participant_2 = Fika.last.participants[1]
-    
-    participant_1.fika_score =+ Fika.last.score[0]
-    participant_2.fika_score =+ Fika.last.score[1]
-    
+
+    participant_1.fika_score = participant_1.fika_score + Fika.last.score[0]
+    participant_2.fika_score = participant_1.fika_score + Fika.last.score[1]
+
     participant_1.save
+    binding.pry
     participant_2.save
   end
 end

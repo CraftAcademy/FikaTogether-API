@@ -20,7 +20,7 @@ class Api::FikasController < ApplicationController
       similarity: similarity,
       score: ScoreService.score(fikas_participants))
     end
-
+    
     if Fika.any?
       render json: { message: 'Fikas successfully created' }, status: 201
     else
