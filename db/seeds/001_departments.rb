@@ -1,5 +1,5 @@
 Department.find_or_create_by(name: 'Marketing')
 Department.find_or_create_by(name: 'HR')
-# Department.find_or_create_by(name: 'Sales')
-# Department.find_or_create_by(name: 'Finance')
-# Department.find_or_create_by(name: 'IT')
+Department.find_or_create_by(name: 'Sales')
+Department.find_or_create_by(name: 'Finance')
+Department.find_or_create_by(name: 'IT')
