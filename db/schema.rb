@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_202133) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "average_score", default: 0
+    t.float "average_score", default: 0.0
     t.integer "number_of_participants", default: 0
   end
 

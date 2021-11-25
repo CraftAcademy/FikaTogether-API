@@ -46,6 +46,7 @@ RSpec.describe 'AssignScoreService', type: :request do
     end
 
     it 'is expected that participant 1 will have a fika score of 7' do
+      # binding.pry
       expect(Participant.first.fika_score).to eq 7
     end
   end
