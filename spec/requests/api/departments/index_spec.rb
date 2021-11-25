@@ -7,7 +7,7 @@ RSpec.describe 'GET /api/departments', type: :request do
 
     let!(:participant_1) { create(:participant, department: department_1, fika_score: 10) }
     let!(:participant_2) { create(:participant, department: department_1, fika_score: 13) }
-    let!(:participant_3) { create(:participant, department: department_2, fika_score: 10) }
+    let!(:participant_3) { create(:participant, department: department_1, fika_score: 9) }
     let!(:participant_4) { create(:participant, department: department_2, fika_score: 13) }
 
     before do
@@ -28,12 +28,12 @@ RSpec.describe 'GET /api/departments', type: :request do
       expect(response_json['departments'].first['participants'].first).to include 'avatar'
     end
 
-    it 'is expected that department_1 will have an average score of 11.5' do
-      expect(response_json['departments'].first['average_score']).to eq 11.5
+    it 'is expected that department_1 will have an average score of 10.67' do
+      expect(response_json['departments'].first['average_score']).to eq 10.67
     end
 
-    it 'is expected that department_1 will show it has 2 participants' do
-      expect(response_json['departments'].first['number_of_participants']).to eq 2
+    it 'is expected that department_1 will show it has 3 participants' do
+      expect(response_json['departments'].first['number_of_participants']).to eq 3
     end
   end
 

@@ -14,7 +14,7 @@ class Department < ApplicationRecord
     departments = Department.all
     departments.each do |department|
       individual_scores = department.participants.pluck(:fika_score)
-      department.average_score = individual_scores.sum.to_f / department.number_of_participants
+      department.average_score = (individual_scores.sum.to_f / department.number_of_participants).round(2)
       department.save
     end
   end
