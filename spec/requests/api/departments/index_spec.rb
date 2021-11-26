@@ -2,8 +2,13 @@ RSpec.describe 'GET /api/departments', type: :request do
   subject { response }
 
   describe 'when there are departments in the database' do
-    let!(:department) { create(:department) }
-    let!(:participant) { create(:participant, department: department) }
+    let!(:department_1) { create(:department) }
+    let!(:department_2) { create(:department) }
+
+    let!(:participant_1) { create(:participant, department: department_1, fika_score: 10) }
+    let!(:participant_2) { create(:participant, department: department_1, fika_score: 13) }
+    let!(:participant_3) { create(:participant, department: department_1, fika_score: 9) }
+    let!(:participant_4) { create(:participant, department: department_2, fika_score: 13) }
 
     before do
       get '/api/departments'
@@ -16,11 +21,19 @@ RSpec.describe 'GET /api/departments', type: :request do
     end
 
     it 'is expected to have a participant' do
-      expect(response_json['departments'].first['participants'].first['name']).to eq participant.name
+      expect(response_json['departments'].first['participants'].first['name']).to eq participant_1.name
     end
 
     it 'is expected to have a participants avatar' do
       expect(response_json['departments'].first['participants'].first).to include 'avatar'
+    end
+
+    it 'is expected that department_1 will have an average score of 10.67' do
+      expect(response_json['departments'].first['average_score']).to eq 10.67
+    end
+
+    it 'is expected that department_1 will show it has 3 participants' do
+      expect(response_json['departments'].first['number_of_participants']).to eq 3
     end
   end
 
